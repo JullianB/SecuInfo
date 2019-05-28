@@ -8,9 +8,9 @@
     
 - créer monsite.conf et y créer un VirtualHost \ Ajouter une authentification Basic:
 
-        *touch etc/apache2/sites-available/monsite.conf*
-        *vim monsite.conf*
-        *htpasswd -c [chemin] [user]*
+        touch etc/apache2/sites-available/monsite.conf
+        vim monsite.conf
+        htpasswd -c [chemin] [user]
         
         <VirtualHost *:80>
         ServerName monsite.com
