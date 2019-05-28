@@ -8,9 +8,9 @@
     
 - créer monsite.conf et y créer un VirtualHost \ Ajouter une authentification Basic:
 
-        *touch etc/apache2/sites-available/monsite.conf*
-        *vim monsite.conf*
-        *htpasswd -c [chemin] [user]*
+        touch etc/apache2/sites-available/monsite.conf
+        vim monsite.conf
+        htpasswd -c [chemin] [user]
         
         <VirtualHost *:80>
         ServerName monsite.com
@@ -64,3 +64,26 @@
         </VirtualHost>
         
 ![capture](https://github.com/JabbM/SecuInfo/blob/master/CaptureWireSharkTP1_02.PNG)
+
+- Retrouver la réponse:
+        
+        md5(H1:nonce:nc:cn:qop:H2)
+        H1= login:realm:password
+        H2= method:uri
+        
+- Via un script python:
+        
+    ```python
+    import hashlib
+
+    h1=hashlib.md5("[login]:[realm]:[password]").hexdigest()
+    h2=hashlib.md5('[method (ici GET)]:[uri]').hexdigest()
+
+    nonce="S5thE/SJBQA=a0826d194af6ba1b3144f8fc86cdc183785e9eb7"
+    nc="00000001"
+    cnonce="d4d628782a6bebe7"
+    qop="auth"
+
+    result= h1 +":"+ nonce +":"+ nc +":"+cnonce +":"+ qop +":"+ h2
+    response=hashlib.md5(result).hexdigest()
+    print(response)
