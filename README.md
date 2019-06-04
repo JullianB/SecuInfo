@@ -92,7 +92,7 @@
     import hashlib
 
     h1=hashlib.md5("[login]:[realm]:[password]").hexdigest()
-    h2=hashlib.md5('[method (ici GET)]:[uri]').hexdigest()
+    h2=hashlib.md5("[method (ici GET)]:[uri]").hexdigest()
 
     nonce="S5thE/SJBQA=a0826d194af6ba1b3144f8fc86cdc183785e9eb7"
     nc="00000001"
