@@ -12,6 +12,13 @@
         vim monsite.conf
         htpasswd -c [chemin] [user]
         
+- Changer les droits et groupe du fichier contenant le mot de passe:
+        
+        chown root:www-data [chemin]
+        chmod 640 [chemin]
+  
+- VirtualHost:
+        
         <VirtualHost *:80>
         ServerName monsite.com
         ServerAlias www.monsite.com
@@ -44,9 +51,17 @@
 
         echo "c2F0YW46cGFzc3dk" | openssl enc -base64 -d
         
-- Créer un nouveau site avec une authentification Digest \ et creer le fichier contenant le user et mot de passe:
-
+- Créer un nouveau site avec une authentification Digest \ Activer le module Digest \ et creer le fichier contenant le user et mot de passe:
+        
+        a2enmod auth_digest
         htdigest -c pass2.txt "private area Digest" satan
+       
+- Changer les droits et groupe du fichier contenant le mot de passe:
+        
+        chown root:www-data [chemin]
+        chmod 640 [chemin]
+        
+- VirtualHost:
 
         <VirtualHost *:80>
         ServerName monsite2.com
