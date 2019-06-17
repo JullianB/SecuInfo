@@ -103,6 +103,7 @@
     response=hashlib.md5(result).hexdigest()
     print(response)
 
+---
 
 # **TP 2**
 
@@ -113,7 +114,7 @@ Dans le fichier de conf général (apache2.conf):
         ServerToken prod
         ServerSignature off
 
-- Script permettant de créer un index.html vide dans chaque répertoire (en partant du principe que leur nom commence tous de la même façon)
+- Script permettant de créer un index.html vide dans chaques répertoires (en partant du principe que leur nom commence tous de la même façon)
 
 find [chemin du dossier source] -type d -iname [caractère(s) récurrent(s)]* -exec touch {}/index.html
 
