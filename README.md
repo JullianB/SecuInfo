@@ -102,3 +102,54 @@
     result= h1 +":"+ nonce +":"+ nc +":"+cnonce +":"+ qop +":"+ h2
     response=hashlib.md5(result).hexdigest()
     print(response)
+
+
+# **TP 2**
+
+- Configurer pour diffuser le moins d'infos possible sur son identité:
+
+Dans le fichier de conf général (apache2.conf):
+
+        ServerToken prod
+        ServerSignature off
+
+- Script permettant de créer un index.html vide dans chaque répertoire (en partant du principe que leur nom commence tous de la même façon)
+
+find [chemin du dossier source] -type d -iname [caractère(s) récurrent(s)]* -exec touch {}/index.html
+
+- Seul /miroir est accessible sous forme de liste par les visiteurs du site:
+
+Activer le module autoindex :
+
+        a2enmod mod_autoindex
+
+Dans le fichier de conf du site:
+
+        <VirtualHost *:80>
+        ...
+                <Directory ...>
+                ...
+                Options -Indexes
+                ...
+                </Directory>
+                <Location "/miroir">
+                Options +Indexes
+                </Location>
+        </VirtualHost>
+
+- Donner accès à /upload mais avec une authentification Digest:
+
+        <VirtualHost *:80>
+        ...
+                <Directory ...>
+                ...
+                Options -Indexes
+                ...
+                </Directory>
+                <Location "/upload">
+                Options +Indexes
+                AuthType digest
+                AuthName "private upload"
+                AuthUserFile [chemin du fichier contenant le password]
+                </Location>
+        </VirtualHost>
