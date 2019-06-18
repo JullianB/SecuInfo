@@ -122,7 +122,7 @@ Dans le fichier de conf général (apache2.conf):
 
 Activer le module autoindex :
 
-        a2enmod mod_autoindex
+        a2enmod autoindex
 
 Dans le fichier de conf du site:
 
