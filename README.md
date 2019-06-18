@@ -114,9 +114,9 @@ Dans le fichier de conf général (apache2.conf):
         ServerToken prod
         ServerSignature off
 
-- Script permettant de créer un index.html vide dans chaques répertoires (en partant du principe que leur nom commence tous de la même façon)
+- Script permettant de créer un index.html vide dans chaques répertoires html:
 
-        find [chemin du dossier source] -type d -iname [caractère(s) récurrent(s)]* -exec touch {}/index.html
+        find [chemin du dossier source] -type d -iname html -exec touch {}/index.html \;
 
 - Seul /miroir est accessible sous forme de liste par les visiteurs du site:
 
