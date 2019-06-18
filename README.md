@@ -134,6 +134,7 @@ Dans le fichier de conf du site:
                 ...
                 </Directory>
                 <Location "/miroir">
+                DirectoryIndex Disabled
                 Options +Indexes
                 </Location>
         </VirtualHost>
@@ -148,6 +149,7 @@ Dans le fichier de conf du site:
                 ...
                 </Directory>
                 <Location "/upload">
+                DirectoryIndex Disabled
                 Options +Indexes
                 AuthType digest
                 AuthName "private upload"
