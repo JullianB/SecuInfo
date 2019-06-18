@@ -111,7 +111,7 @@
 
 Dans le fichier de conf général (apache2.conf):
 
-        ServerToken prod
+        ServerTokens prod
         ServerSignature off
 
 - Script permettant de créer un index.html vide dans chaques répertoires html:
